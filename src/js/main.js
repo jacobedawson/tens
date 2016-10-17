@@ -32,7 +32,7 @@ $('#action-button').on('click', function() {
         $('#header-score').html(time.toLocaleString('de-DE') + ' ' + timeType);
         $('#action-button').html('Start!').removeClass('timing-mode');
     }
-
+    ga('send', 'event', 'Action Button', 'Clicked');
 });
 /*===== END Set Timer =====*/
 
@@ -40,6 +40,7 @@ $('#action-button').on('click', function() {
 $('#time-selection').on('click', '.dropdown-menu li a ', function() {
     $('#time-selection > button').text($(this).attr('data-time'));
     target = $(this).attr('data-target');
+    ga('send', 'event', 'Time Select', 'Clicked');
 });
 /*===== END Control Dropdown =====*/
 
