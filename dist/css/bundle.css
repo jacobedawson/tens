@@ -5749,7 +5749,7 @@ button.close {
 body {
   font-family: 'Rubik', sans-serif;
   background: #1d1f20;
-  padding-top: 50px; }
+  padding-top: 20px; }
   body #app-container {
     display: -ms-flexbox;
     display: flex;
