@@ -13,12 +13,14 @@ $(document).ready(function() {
 var timerActive = false;
 var time = 0;
 var target = 1000;
+var rolling = $('<img src="dist/images/rolling.svg"/>');
 $('#action-button').on('click', function() {
     if (!timerActive) {
         time = 0;
         $('#header-score').html('timing...').removeClass('winning');
         $('#action-button').html('Stop').addClass('timing-mode');
         $('#flashcard-result').html('?');
+        $('#score-reaction').html(rolling);
         timerActive = true;
         start = new Date().getTime();
     } else {
