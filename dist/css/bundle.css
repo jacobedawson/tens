@@ -5763,6 +5763,8 @@ body {
       color: #4E4ED2;
       font-size: 6rem;
       font-weight: bold; }
+      body #app-container h1#header-score.winning {
+        color: #FFD766; }
     body #app-container h2 {
       color: #44D2C3; }
     body #app-container button {

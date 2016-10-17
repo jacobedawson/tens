@@ -27,6 +27,11 @@ body {
       color: $ts_purple;
       font-size: 6rem;
       font-weight: bold;
+      &#header-score {
+        &.winning {
+          color: $ts_yellow;
+        }
+      }
     }
     h2 {
       color: $ts_blue;

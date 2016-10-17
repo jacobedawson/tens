@@ -28,7 +28,7 @@ var target = 1000;
 $('#action-button').on('click', function() {
     if (!timerActive) {
         time = 0;
-        $('#header-score').html('timing...');
+        $('#header-score').html('timing...').removeClass('winning');
         $('#action-button').html('Stop').addClass('timing-mode');
         $('#flashcard-result').html('?');
         timerActive = true;
@@ -55,16 +55,18 @@ $('#time-selection').on('click', '.dropdown-menu li a ', function() {
 
 /*===== Achievement Message =====*/
 function outcomeMessage(time, target) {
-    var message;
     var gap;
     var reaction;
     gap = time - target;
+    // gap = 0;
     $('#flashcard-result').html(gap);
-    console.log(gap);
     if (gap === 0) {
+        $("#audio-win")[0].play();
+        $('#header-score').addClass('winning');
         reaction = 'Holy amazeballs!!! You win!!';
     }
     if (gap > 0 && gap <= 10 || gap < 0 && gap >= -10) {
+        $("#audio-close")[0].play();
         reaction = 'Are you secretly a ninja?!';
     }
     if (gap >= 11 && gap <= 20 || gap < -11 && gap >= -20) {
@@ -89,6 +91,7 @@ function outcomeMessage(time, target) {
         reaction = 'My grandma has better reflexes! And she\'s dead!';
     }
     if (gap > 1001 || gap < -1001) {
+        $("#audio-wasted")[0].play();
         reaction = 'I think your phone might be broken...';
     }
     $('#score-reaction').text(reaction);
