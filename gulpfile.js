@@ -51,6 +51,7 @@ gulp.task('minify-css', ['clean-css', 'sass'], function() {
 gulp.task('scripts', ['clean-scripts'], function() {
     return gulp.src([
         'src/js/vendor/jquery-1.11.2.min.js',
+        'src/js/vendor/jquery-ui.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/main.js'
     ])

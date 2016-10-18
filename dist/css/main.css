@@ -5794,6 +5794,16 @@ body {
       body #app-container #flashcard-container #flashcard-result {
         position: absolute;
         right: 0px; }
+      body #app-container #flashcard-container div#score {
+        color: blueviolet;
+        font-size: 2rem;
+        position: absolute;
+        top: -15px;
+        left: 45px; }
+      body #app-container #flashcard-container h6 {
+        position: absolute;
+        top: -15px;
+        color: #44d2c3; }
     body #app-container p#score-reaction {
       margin-top: 50px;
       color: #44D2C3;

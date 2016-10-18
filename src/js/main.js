@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    $("#audio-warm-synth")[0].play();
 
 /*
  1.) User selects a time i.e. 10s
@@ -12,6 +12,7 @@ $(document).ready(function() {
 /*===== START Set Timer =====*/
 var timerActive = false;
 var time = 0;
+var points = 0;
 var target = 1000;
 var rolling = $('<img src="dist/images/rolling.svg"/>');
 $('#action-button').on('click', function() {
@@ -52,41 +53,59 @@ function outcomeMessage(time, target) {
     // gap = 0;
     $('#flashcard-result').html(gap);
     if (gap === 0) {
-        $("#audio-win")[0].play();
-        $('#header-score').addClass('winning');
+        $("#audio-win-v3")[0].play();
+        $('#header-score').effect('bounce', { times: 10 }, "slow" ).addClass('winning');
+        updateScore(100);
         reaction = 'Holy amazeballs!!! You win!!';
     }
     if (gap > 0 && gap <= 10 || gap < 0 && gap >= -10) {
-        $("#audio-close")[0].play();
+        $("#audio-win-v1")[0].play();
+        updateScore(5);
         reaction = 'Are you secretly a ninja?!';
     }
     if (gap >= 11 && gap <= 20 || gap < -11 && gap >= -20) {
+        updateScore(3);
         reaction = 'Superman wants his reflexes back!';
     }
     if (gap >= 21 && gap <= 30 || gap < -21 && gap >= -30) {
+        updateScore(1);
         reaction = 'How many redbulls have you had!';
     }
     if (gap >= 31 && gap <= 50 || gap < -31 && gap >= -50) {
         reaction = 'oooohhh sooo close!';
     }
     if (gap >= 51 && gap <= 150 || gap < -51 && gap >= -150) {
+        updateScore(-2);
         reaction = 'ouch...nearly there!';
     }
     if (gap >= 151 && gap <= 250 || gap < -151 && gap >= -250) {
+        updateScore(-5);
         reaction = 'Not bad...not great..but not bad';
     }
     if (gap >= 251 && gap <= 500 || gap < -250 && gap >= -500) {
+        updateScore(-10);
+        $("#audio-pop")[0].play();
         reaction = 'Mmm - you might need some more practice...';
     }
     if (gap >= 501 && gap <= 1000 || gap < -501 && gap >= -1000) {
+        updateScore(-15);
+        $("#audio-close")[0].play();
         reaction = 'My grandma has better reflexes! And she\'s dead!';
     }
     if (gap > 1001 || gap < -1001) {
         $("#audio-wasted")[0].play();
+        updateScore(-25);
         reaction = 'I think your phone might be broken...';
     }
     $('#score-reaction').text(reaction);
 }
 /*===== END Achievement Message =====*/
+
+/*===== Score =====*/
+function updateScore(newScore) {
+    points += newScore;
+    $('#score').html(points);
+}
+/*===== End Score =====*/
 
 });
